@@ -28,8 +28,19 @@ class RegistroRequest extends FormRequest
             'password' => [
                 'required',
                 'confirmed',
-                Password::min(8)->letters()->symbols()->numbers()
+                // Password::min(8)->letters()->symbols()->numbers()
+                Password::min(5)->letters()->numbers()
                 ]
+        ];
+    }
+
+    public function messages(){
+        return [
+            'name'=> 'El nombre es requerido',
+            'email'=> 'El email es requerido',
+            'email.email' => 'Debes escribir un email valido',
+            'email.unique'=> 'Ese usuario ya esta registrado',
+            'password'=> 'El password debe contener al menos 5 caracteres, letras y numeros'
         ];
     }
 }
